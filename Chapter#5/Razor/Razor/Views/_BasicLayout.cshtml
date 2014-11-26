@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <h1>Product information</h1>
+        <div style="padding: 20px; border: solid medium black; font-size: 20pt">
+            @RenderBody()
+        </div>
+    </div>
+    <h2>Like <a href="https://vk.com/id0">The Best man EVER!</a></h2>
+    <div>
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Name and Price example", "NameAndPrice", "Home")</li>
+            <li>@Html.ActionLink("Expression in Razor example", "DemoExpression", "Home")</li>
+            <li>@Html.ActionLink("Array in Razor example", "DemoArray", "Home")</li>
+        </ul>
+    </div>
+</body>
+</html>
