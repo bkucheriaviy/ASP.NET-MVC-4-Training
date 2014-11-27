@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="MinimumDiscountHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LinqValueCalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
