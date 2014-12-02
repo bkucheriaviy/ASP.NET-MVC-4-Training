@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
-using SportsStore.WebUI.Models;
 
 namespace SportsStore.WebUI.Tests.ControllerTests
 {
     [TestClass]
-    public class ProductControllerTests
+    public class NavControllerTests
     {
         [TestMethod]
-        public void ListReturnsProductsPerPage()
+        public void MenuReturnsCorrectCategories()
         {
             //given
             var mockProductRepository = new Mock<IProductRepository>();
@@ -28,17 +24,18 @@ namespace SportsStore.WebUI.Tests.ControllerTests
                 new Product {Name = "Corner flag", Category = "Soccer", Price = 34.5M}
             });
             //when
-            var productController = new ProductController(mockProductRepository.Object) {PageSize = 3};
+            var productController = new NavController(mockProductRepository.Object);
 
-            var result = ((ProductListViewModel)productController.List(2).Model).Products.ToList();
+            var result = ((IEnumerable<string>)productController.Menu().Model).ToArray();
 
             //then
-            Assert.AreEqual(result.Count(), 1);
-            Assert.AreEqual(result[0].Name, "Corner flag");
+            Assert.AreEqual(result.Count(), 2);
+            Assert.AreEqual(result[0], "Soccer");
+            Assert.AreEqual(result[1], "Watersports");
         }
 
         [TestMethod]
-        public void ListReturnsCorrectPageInfo()
+        public void MenuReturnsCurrentSelectedCategory()
         {
             //given
             var mockProductRepository = new Mock<IProductRepository>();
@@ -50,15 +47,12 @@ namespace SportsStore.WebUI.Tests.ControllerTests
                 new Product {Name = "Corner flag", Category = "Soccer", Price = 34.5M}
             });
             //when
-            var productController = new ProductController(mockProductRepository.Object) { PageSize = 3 };
+            var productController = new NavController(mockProductRepository.Object);
 
-            var result = ((ProductListViewModel) productController.List(2).Model).PagingInfo;
+            var result = productController.Menu("Soccer").ViewBag.SelectedCategory;
 
             //then
-            Assert.AreEqual(result.TotalItems, 4);
-            Assert.AreEqual(result.TotalPages, 2);
-            Assert.AreEqual(result.ItemsPerPage, 3);
-            Assert.AreEqual(result.CurrentPage, 2);
+            Assert.AreEqual(result, "Soccer");
         }
     }
 }

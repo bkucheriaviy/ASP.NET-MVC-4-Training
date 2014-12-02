@@ -100,6 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerTests\NavControllerTests.cs" />
     <Compile Include="ControllerTests\ProductControllerTests.cs" />
     <Compile Include="HtmlHelpers\PagingHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
