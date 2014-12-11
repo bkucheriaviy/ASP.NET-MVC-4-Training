@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportsStore.Domain.Abstract;
@@ -104,6 +105,60 @@ namespace SportsStore.WebUI.Tests.ControllerTests
             Assert.AreEqual(result.TotalPages, 1);
             Assert.AreEqual(result.ItemsPerPage, 3);
             Assert.AreEqual(result.CurrentPage, 1);
+        }
+
+        [TestMethod]
+        public void ProductControllerGetImageReturnsData()
+        {
+            //given
+            var productWithImage = new Product
+            {
+                ProductId = 1,
+                Name = "Product 1",
+                ImageData = new byte[] {},
+                ImageMimeType = "image/png"
+            };
+            var mockProductRepository = new Mock<IProductRepository>();
+            mockProductRepository.Setup(p => p.Products).Returns(new[]
+            {
+                productWithImage,
+                new Product {ProductId = 2, Name = "Product 2"}
+            });
+            //when
+            var productController = new ProductController(mockProductRepository.Object);
+
+            var result = productController.GetImage(1);
+
+            //then
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof (FileResult));
+            Assert.AreEqual(productWithImage.ImageMimeType, ((FileResult) result).ContentType);
+        }
+
+        [TestMethod]
+        public void ProductControllerGetImageReturnsNullDataForInvalidId()
+        {
+            //given
+            var productWithImage = new Product
+            {
+                ProductId = 1,
+                Name = "Product 1",
+                ImageData = new byte[] {},
+                ImageMimeType = "image/png"
+            };
+            var mockProductRepository = new Mock<IProductRepository>();
+            mockProductRepository.Setup(p => p.Products).Returns(new[]
+            {
+                productWithImage,
+                new Product {ProductId = 2, Name = "Product 2"}
+            });
+            //when
+            var productController = new ProductController(mockProductRepository.Object);
+
+            var result = productController.GetImage(100);
+
+            //then
+            Assert.IsNull(result);
         }
     }
 }

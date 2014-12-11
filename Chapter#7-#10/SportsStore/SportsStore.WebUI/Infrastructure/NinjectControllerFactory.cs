@@ -6,6 +6,8 @@ using Ninject;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;
 using SportsStore.Domain.Entities;
+using SportsStore.WebUI.Infrastructure.Abstract;
+using SportsStore.WebUI.Infrastructure.Concrete;
 
 namespace SportsStore.WebUI.Infrastructure
 {
@@ -33,6 +35,7 @@ namespace SportsStore.WebUI.Infrastructure
                     {
                         WriteToFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
                     });
+            _ninjectKernel.Bind<IAuthProvider>().To<AdminSecretAuthProvider>();
         }
     }
 }

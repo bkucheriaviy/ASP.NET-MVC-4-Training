@@ -84,7 +84,7 @@ namespace SportsStore.WebUI.Tests.ControllerTests
             var product = new Product {ProductId = 1, Name = "Product 1"};
             //when
 
-            var result = adminController.Edit(product);
+            var result = adminController.Edit(product, null);
 
             //then
             mockProductRepostiroy.Verify(p => p.SaveProduct(product), Times.Once);
@@ -100,7 +100,7 @@ namespace SportsStore.WebUI.Tests.ControllerTests
             var product = new Product { ProductId = 1, Name = "Product 1" };
             //when
             adminController.ModelState.AddModelError("error", "some error");
-            var result = adminController.Edit(product);
+            var result = adminController.Edit(product, null);
 
             //then
             mockProductRepostiroy.Verify(p => p.SaveProduct(product), Times.Never);

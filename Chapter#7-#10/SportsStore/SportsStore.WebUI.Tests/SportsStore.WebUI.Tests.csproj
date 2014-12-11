@@ -100,6 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerTests\AccountControllerTests.cs" />
     <Compile Include="ControllerTests\AdminControllerTests.cs" />
     <Compile Include="ControllerTests\CartControllerTests.cs" />
     <Compile Include="ControllerTests\NavControllerTests.cs" />
