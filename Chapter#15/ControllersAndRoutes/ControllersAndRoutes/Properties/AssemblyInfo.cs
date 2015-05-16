@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // общие сведения об этой сборке.
-[assembly: AssemblyTitle("UrlsAndRoutes")]
+[assembly: AssemblyTitle("ControllersAndRoutes")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UrlsAndRoutes")]
-[assembly: AssemblyCopyright("© , 2014")]
+[assembly: AssemblyProduct("ControllersAndRoutes")]
+[assembly: AssemblyCopyright("© , 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для ID-идентификации библиотеки типов, если этот проект видим для COM
-[assembly: Guid("37f82c84-6dcc-4a9f-baa4-d09def456143")]
+[assembly: Guid("e4518821-d4a3-450d-94ff-c2df99e9ce8c")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

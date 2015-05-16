@@ -1,0 +1,10 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<h2>IndexWithViewBag</h2>
+The day is: @((DateTime)TempData["date"]).DayOfWeek
+<p/>
+The Message is: @TempData["message"]

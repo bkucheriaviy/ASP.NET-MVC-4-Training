@@ -29,6 +29,7 @@ namespace UrlsAndRoutes.Tests
             //TestRouteMatch("~/Customer/List/All/Delete/Perm", "Customer", "List", new { id = "All", catchall = "Delete/Perm" });
         }
 
+       
         private void TestRouteMatch(string url, string controller, string action, object propertySet = null)
         {
             //given
@@ -76,7 +77,5 @@ namespace UrlsAndRoutes.Tests
             mockHttpContext.Setup(c => c.Response).Returns(mockHttpResponse.Object);
             return mockHttpContext.Object;
         }
-
-       
     }
 }

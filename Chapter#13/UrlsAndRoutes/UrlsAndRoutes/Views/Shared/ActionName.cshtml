@@ -12,5 +12,7 @@
 <body>
     <div>The controller is: @ViewBag.Controller</div>
     <div>The action is: @ViewBag.Action</div>
+    <div>@Html.ActionLink("This is outgoing URL", "CustomVariable")</div>
+    <div> This is Url: @Html.ActionLink("ClickMe", "GetLegacyUrl", new  { legacyUrl = "~/old/NET_Project" })</div>
 </body>
 </html>
