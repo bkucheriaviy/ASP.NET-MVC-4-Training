@@ -33,5 +33,13 @@ namespace Filters.Controllers
                 throw new ArgumentOutOfRangeException("id", id, "");
             return string.Format("The id value is : {0}", id);
         }
+
+        [ProfileAction]
+        [ProfileResult]
+        [ProfileAll]
+        public string FilterTest()
+        {
+            return "This is the Filter action";
+        }
     }
 }
