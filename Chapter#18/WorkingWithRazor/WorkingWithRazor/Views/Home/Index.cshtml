@@ -1,0 +1,36 @@
+﻿@using System.Reflection
+@using WorkingWithRazor.Controllers
+@model Controller
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Header {
+    <div class="view">
+        @foreach (var action in Model.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                                          .Where(m => typeof(ActionResult)
+                                          .IsAssignableFrom(m.ReturnType)))
+        {
+            @Html.ActionLink(action.Name, action.Name, null, new { style = "margin: 5px" })
+        }
+    </div>
+}
+
+@section Body
+{
+    <div class="view">
+        This is a list of fruit names:
+
+        @foreach (var name in ((HomeController)Model).ListOfFruits)
+        {
+            <span><b>@name</b></span>
+        }
+    </div>
+}
+
+@*@section Footer {
+    <div class="view">
+        This is the footer
+    </div>
+}*@

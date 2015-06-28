@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = null;
+}
+
+<h2>This is List action from Home controller</h2>
+
+@Html.Partial("Message", new[] { "Apple", "Orange", "Pear" })
+@Html.Action("Time")
