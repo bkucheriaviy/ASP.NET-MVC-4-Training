@@ -1,0 +1,30 @@
+﻿@using HelperMethods.Models
+@model Person
+
+@{
+    ViewBag.Title = "Form Helper Methods";
+    Html.EnableUnobtrusiveJavaScript(false);
+}
+
+<h2>Create Person</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="field">
+        <label class="field-label">Persion Id</label>
+        @Html.TextBoxFor(m=> m.PersonId)
+    </div>
+    <div class="field">
+        <label class="field-label">First Name</label>
+        @Html.TextBoxFor(m => m.FirstName)
+    </div>
+    <div class="field">
+        <label class="field-label">Last Name</label>
+        @Html.TextBoxFor(m => m.LastName)
+    </div>
+    <div class="field">
+        <label class="field-label">Role</label>
+        @Html.DropDownListFor(m=> m.Role, new SelectList(Enum.GetNames(typeof(Role))))
+    </div>
+    <input type="submit" value="Submit"/>
+}

@@ -1,0 +1,17 @@
+﻿@using HelperMethods.Infrastructure
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>External Helper Method</title>
+</head>
+<body>
+    <div>
+        Here are the fruits: @Html.ListArrayItems((IEnumerable<string>)ViewBag.Fruits)
+    </div>
+    <div>
+        Here are the cities: @Html.ListArrayItems((IEnumerable<string>)ViewBag.Cities)
+    </div>
+</body>
+</html>

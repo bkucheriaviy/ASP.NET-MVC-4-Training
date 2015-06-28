@@ -1,0 +1,26 @@
+﻿@using HelperMethods.Infrastructure
+@model string
+
+@{
+    ViewBag.Title = "<input> string encoding";
+}
+
+<h2>Encoding example, press F12</h2>
+
+Here is the content from view:
+
+<div style=" border: thin solid black;padding: 10px">
+    <p>@Model</p>
+</div>
+
+Here is the content from the Helper Method:
+
+<div style=" border: thin solid black;padding: 10px">
+    <p>@Html.DisplayMessage(Model)</p>
+</div>
+
+Here is the content from the fixed by encoding Helper Method:
+
+<div style=" border: thin solid black;padding: 10px">
+    <p>@Html.DisplayMessageFixed(Model)</p>
+</div>

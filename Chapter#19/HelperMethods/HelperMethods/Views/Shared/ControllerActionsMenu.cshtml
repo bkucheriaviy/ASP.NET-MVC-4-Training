@@ -1,0 +1,9 @@
+﻿@using System.Reflection
+
+@foreach (var action in @ViewContext.Controller.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                                          .Where(m => typeof(ActionResult).IsAssignableFrom(m.ReturnType))
+                                          .Select(m=> m.Name)
+                                          .Distinct())
+{
+    @Html.ActionLink(action, action, null, new { style = "margin: 5px" })
+}

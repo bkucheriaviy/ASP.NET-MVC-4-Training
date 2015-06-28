@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+@helper ListArrayItems(IEnumerable<string> items)
+{
+    <ul>
+        @foreach (var item in items)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inner Helper Method</title>
+</head>
+<body>
+    <div>
+        Here are the fruits: @ListArrayItems(ViewBag.Fruits)
+    </div>
+    <div>
+        Here are the cities: @ListArrayItems(ViewBag.Cities)
+    </div>
+</body>
+</html>
