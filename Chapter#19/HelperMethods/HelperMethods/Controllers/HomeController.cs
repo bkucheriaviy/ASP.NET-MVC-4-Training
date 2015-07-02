@@ -37,5 +37,16 @@ namespace HelperMethods.Controllers
         {
             return View(person);
         }
+
+        public ActionResult TemplateHelperMethods()
+        {
+            return View(new Person());
+        }
+
+        [HttpPost]
+        public ActionResult TemplateHelperMethods(Person person)
+        {
+            return View("DisplayPerson",person);
+        }
     }
 }

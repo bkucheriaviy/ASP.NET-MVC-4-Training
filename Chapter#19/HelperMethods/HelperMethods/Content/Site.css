@@ -27,15 +27,6 @@ textarea {
     min-height: 75px;
 }
 
-.editor-label {
-    margin: 1em 0 0 0;
-}
-
-.editor-field {
-    margin: 0.5em 0 0 0;
-}
-
-
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
@@ -69,3 +60,37 @@ textarea {
     width: 100px;
 }
 
+
+h2 > label {
+    width: inherit;
+}
+
+.editor-label, .editor-field {
+    float: left;
+}
+
+.editor-label {
+    clear: left;
+    display: inline-block;
+    width: 100px;
+}
+
+.editor-label {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.editor-field {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+input[type=submit] {
+    float: left;
+    clear: both;
+    margin: 10px;
+}
+
+.column {
+    float: left;
+    margin: 10px;
+}
