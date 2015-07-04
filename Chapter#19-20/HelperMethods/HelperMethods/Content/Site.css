@@ -60,11 +60,6 @@ textarea {
     width: 100px;
 }
 
-
-h2 > label {
-    width: inherit;
-}
-
 .editor-label, .editor-field {
     float: left;
 }
@@ -94,3 +89,24 @@ input[type=submit] {
     float: left;
     margin: 10px;
 }
+
+table, td, th {
+    border: thin solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    background-color: lemonchiffon;
+    text-align: left;
+    margin: 10px 0;
+}
+
+div.load {
+    color: red;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+div.ajaxLink {
+    margin-right: 5px;
+    float: left;
+}
+

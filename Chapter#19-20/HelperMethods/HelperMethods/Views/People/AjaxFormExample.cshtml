@@ -1,0 +1,83 @@
+﻿@using HelperMethods.Models
+@model string
+
+@{
+    ViewBag.Title = "Get People";
+    var ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "tableBody",
+        Url = Url.Action("GetPeopleData"),
+        LoadingElementId = "loading",
+        LoadingElementDuration = 1000,
+        Confirm = "Do you wish to request new data?",
+        OnBegin = "OnBegin",
+        OnSuccess = "OnSuccess",
+        OnFailure = "OnFailure",
+        OnComplete = "OnComplete"
+    };
+}
+
+<h2>Get People</h2>
+
+<div id="loading" class="load" style="display:none">
+    <p>Loading data...</p>
+</div>
+<div>
+    Show Event Alerts:
+    <input type="checkbox" id="showEventAlerts" />
+</div>
+<table>
+    <thead><tr><th>First</th><th>Last</th><th>Role</th></tr></thead>
+    <tbody id="tableBody">
+        @Html.Action("GetPeopleData", new { selectedRole = Model })
+    </tbody>
+</table>
+@using (Ajax.BeginForm(ajaxOptions))
+{
+    <div>
+        @Html.DropDownList("selectedRole", new SelectList(new[] { "All" }.Concat(Enum.GetNames(typeof(Role)))))
+        <button type="submit">Submit</button>
+    </div>
+}
+<div>
+    Json response links
+    @foreach (var role in Enum.GetNames(typeof(Role)))
+    {
+        <div class="ajaxLink">
+            @Ajax.ActionLink(role, "AjaxFormExample", new { selectedRole = role }, new AjaxOptions
+            {
+                Url = Url.Action("GetPeopleDataJson", new { selectedRole = role }),
+                OnSuccess = "processData"
+            })
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    function OnBegin() {
+        if ($("#showEventAlerts").prop("checked"))
+            alert("This is OnBegin Callback");
+    }
+
+    function OnSuccess(data) {
+        if ($("#showEventAlerts").prop("checked"))
+            alert("This is OnSuccess callback:" + data);
+    }
+    function OnFailture(request, error) {
+        if ($("#showEventAlerts").prop("checked"))
+            alert("This is OnFailture callback" + error);
+    }
+    function OnComplete(request, status) {
+        if ($("#showEventAlerts").prop("checked"))
+            alert("This is OnComplete callback" + status);
+    }
+    function processData(data) {
+        var target = $("#tableBody");
+        target.empty();
+        for (var i = 0; i < data.length; i++) {
+            var person = data[i];
+            target.append("<tr><td>" + person.FirstName + "</td>" +
+                              "<td>" + person.LastName + "</td>" +
+                              "<td>" + person.Role + "</td></tr>");
+        }
+    }
+</script>
