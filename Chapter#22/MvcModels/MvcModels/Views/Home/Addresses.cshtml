@@ -1,0 +1,31 @@
+﻿@model IList<MvcModels.Models.AddressSummary>
+@{
+    ViewBag.Title = "Addresses";
+}
+
+<h2>Addresses</h2>
+@if (Model.Count == 0)
+{
+    using (Html.BeginForm())
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            <fieldset>
+                <legend>Address @(i + 1)</legend>
+                <div><label>City</label>@Html.TextBox("[" + @i + "]." + "City")</div>
+                <div><label>Country</label>@Html.TextBox("[" + @i + "]." + "Country")</div>
+            </fieldset>
+        }
+        <div><input type="submit" value="Submit" /></div>
+    }
+}
+else
+{
+    foreach (var address in Model)
+    {
+        <p>@address.City @address.Country</p>
+    }
+    @Html.ActionLink("Back", "Addresses")
+}
+
+
