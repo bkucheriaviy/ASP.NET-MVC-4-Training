@@ -1,0 +1,21 @@
+﻿@model ModelValidation.Models.IAppointment
+
+@{
+    ViewBag.Title = "Make Booking";
+}
+<h2>Make Booking</h2>
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.ValidationMessageFor(m=> m.ClientName)
+    <p> Your name: @Html.EditorFor(m => m.ClientName)</p>
+    @Html.ValidationMessageFor(m => m.Date)
+    <p> Appointment date: @Html.EditorFor(m => m.Date)</p>
+    @Html.ValidationMessageFor(m => m.TermsAccepted)
+    <p> @Html.EditorFor(m => m.TermsAccepted) I accept the terms & conditions</p>
+    <input type="submit" value="Make booking"/>
+}
